@@ -5,18 +5,23 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.teamcode.mechanisms.MecanumDrive;
 import org.firstinspires.ftc.teamcode.mechanisms.Intake;
 import org.firstinspires.ftc.teamcode.mechanisms.Shooter;
+import org.firstinspires.ftc.teamcode.mechanisms.Revolver;
 
 public class MecanumFieldOrientatedOpMode extends OpMode {
     MecanumDrive drive = new MecanumDrive();
     double forward, strafe, rotate;
     Intake intake = new Intake();
     Shooter shooter = new Shooter();
+    Revolver revolver = new Revolver();
+
+    boolean lastA = false;
 
     @Override
     public void init() {
         drive.init(hardwareMap);
         intake.init(hardwareMap);
         shooter.init(hardwareMap);
+        revolver.init(hardwareMap);
     }
 
     @Override
@@ -41,5 +46,14 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
         } else {
             shooter.stop();
         }
+
+        // Revolver
+        boolean currentA = gamepad2.a;
+
+        if (currentA && !lastA) {
+            revolver.nextPosition();
+        }
+
+        lastA = currentA;
     }
 }
