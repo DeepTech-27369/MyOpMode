@@ -11,12 +11,13 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 public class MecanumDrive {
     private DcMotor frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor;
     private IMU imu;
+
     public void init(HardwareMap hwMap) {
-        double frontLeftPower = forward + strafe + rotate;
-        double backLeftPower = - forward - strafe + rotate;
-        double frontRightPower = - forward + strafe + rotate;
-        double backRightPower = forward - strafe + rotate;
-        
+        frontLeftMotor = hwMap.get(DcMotor.class, "frontLeftMotor");
+        backLeftMotor = hwMap.get(DcMotor.class, "backLeftMotor");
+        frontRightMotor = hwMap.get(DcMotor.class, "frontRightMotor");
+        backRightMotor = hwMap.get(DcMotor.class, "backRightMotor");
+
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -28,7 +29,7 @@ public class MecanumDrive {
         imu = hwMap.get(IMU.class, "imu");
 
         RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot(
-                RevHubOrientationOnRobot. LogoFacingDirection.UP,
+                RevHubOrientationOnRobot.LogoFacingDirection.UP,
                 RevHubOrientationOnRobot.UsbFacingDirection.FORWARD);
 
         imu.initialize(new IMU.Parameters(RevOrientation));
@@ -39,7 +40,6 @@ public class MecanumDrive {
         double backLeftPower = forward - strafe + rotate;
         double frontRightPower = forward - strafe - rotate;
         double backRightPower = forward + strafe - rotate;
-
         double maxPower = 1.0;
         double maxSpeed = 1.0;
 
