@@ -4,19 +4,20 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.mechanisms.MecanumDrive;
 import org.firstinspires.ftc.teamcode.mechanisms.Intake;
-import org.firstinspires.ftc.teamcode.mechanisms.Shooter;
+//import org.firstinspires.ftc.teamcode.mechanisms.Shooter;
 
+@TeleOp(name = "Mecanum No Shooter", group = "TeleOp")
 public class MecanumFieldOrientatedOpMode extends OpMode {
     MecanumDrive drive = new MecanumDrive();
     double forward, strafe, rotate;
     Intake intake = new Intake();
-    Shooter shooter = new Shooter();
+    //Shooter shooter = new Shooter();
 
     @Override
     public void init() {
         drive.init(hardwareMap);
         intake.init(hardwareMap);
-        shooter.init(hardwareMap);
+        //shooter.init(hardwareMap);
     }
 
     @Override
@@ -36,10 +37,10 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
         }
 
         // Shooter
-        if (gamepad2.right_bumper) {
-            shooter.shoot();
-        } else {
-            shooter.stop();
+        //if (gamepad2.right_bumper) {
+            //shooter.shoot();
+        } //else {
+           // shooter.stop();
         }
     }
 }
