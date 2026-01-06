@@ -1,11 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.mechanisms.MecanumDrive;
 import org.firstinspires.ftc.teamcode.mechanisms.Intake;
 //import org.firstinspires.ftc.teamcode.mechanisms.Shooter;
-
+//ee
 @TeleOp(name = "Mecanum No Shooter", group = "TeleOp")
 public class MecanumFieldOrientatedOpMode extends OpMode {
     MecanumDrive drive = new MecanumDrive();
@@ -37,10 +38,10 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
         }
 
         // Shooter
-        //if (gamepad2.right_bumper) {
-            //shooter.shoot();
-        } //else {
-           // shooter.stop();
-        }
+        /* if (gamepad2.right_bumper) {
+            shooter.shoot();
+        } else {
+            shooter.stop();
+        } */
     }
 }
