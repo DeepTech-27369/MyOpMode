@@ -37,10 +37,10 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
         }
 
         // Shooter
-        //if (gamepad2.right_bumper) {
-            //shooter.shoot();
-        } //else {
-           // shooter.stop();
-        }
+        /* if (gamepad2.right_bumper) {
+            shooter.shoot();
+        } else {
+            shooter.stop();
+        } */
     }
 }
