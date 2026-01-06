@@ -12,11 +12,11 @@ public class MecanumDrive {
     private DcMotor frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor;
     private IMU imu;
     public void init(HardwareMap hwMap) {
-        frontLeftMotor = hwMap.get(DcMotor.class, "left_front");
-        backLeftMotor = hwMap.get(DcMotor.class, "left_back");
-        frontRightMotor = hwMap.get(DcMotor.class, "right_front");
-        backRightMotor = hwMap.get(DcMotor.class, "right_back");
-
+        double frontLeftPower = forward + strafe + rotate;
+        double backLeftPower = - forward - strafe + rotate;
+        double frontRightPower = - forward + strafe + rotate;
+        double backRightPower = forward - strafe + rotate;
+        
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
