@@ -1,4 +1,4 @@
-/* package org.firstinspires.ftc.teamcode.mechanisms;
+package org.firstinspires.ftc.teamcode.mechanisms;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -9,6 +9,7 @@ public class Shooter {
     private DcMotor rightShooterMotor;
 
     public void init(HardwareMap hwMap) {
+
         leftShooterMotor = hwMap.get(DcMotor.class, "leftShooter");
         rightShooterMotor = hwMap.get(DcMotor.class, "rightShooter");
 
@@ -25,4 +26,4 @@ public class Shooter {
         rightShooterMotor.setPower(0.0);
     }
 
-} */
+}
