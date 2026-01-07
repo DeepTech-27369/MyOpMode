@@ -13,6 +13,9 @@ public class Shooter {
         leftShooterMotor = hwMap.get(DcMotor.class, "leftShooter");
         rightShooterMotor = hwMap.get(DcMotor.class, "rightShooter");
 
+        leftShooterMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightShooterMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
         stop();
     }
 
