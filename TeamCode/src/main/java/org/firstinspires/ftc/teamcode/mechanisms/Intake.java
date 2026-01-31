@@ -15,7 +15,7 @@ public class Intake {
     }
 
     public void run() {
-        intakeMotor.setPower(1.0);
+        intakeMotor.setPower(-1.0);
     }
 
     public void stop() {
