@@ -43,9 +43,9 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
         drive.drive(forward, rotate, strafe);
 
         // Intake
-        if (gamepad2.a) {
+        if (gamepad1.a) {
             intake.run();
-        } else if (gamepad2.b) {
+        } else if (gamepad1.b) {
             intake.runItBack();
         } else {
             intake.stop();
@@ -60,11 +60,11 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
         if (longButton && !lastLongButton) {
             if (!shooterOn) {
                 shooterOn = true;
-                shooterRPM = 3200; // long distance
-            } else if (shooterRPM == 3200) {
+                shooterRPM = 3150; // long distance
+            } else if (shooterRPM == 3150) {
                 shooterOn = false; // pressing same mode turns it off
             } else {
-                shooterRPM = 3200; // switch from short -> long
+                shooterRPM = 3150; // switch from short -> long
             }
         }
 
@@ -72,11 +72,11 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
         if (shortButton && !lastShortButton) {
             if (!shooterOn) {
                 shooterOn = true;
-                shooterRPM = 2500; // short distance
-            } else if (shooterRPM == 2500) {
+                shooterRPM = 2100; // short distance
+            } else if (shooterRPM == 2100) {
                 shooterOn = false; // pressing same mode turns it off
             } else {
-                shooterRPM = 2500; // switch from long -> short
+                shooterRPM = 2700; // switch from long -> short
             }
         }
 

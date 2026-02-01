@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 @SuppressWarnings("unused")
-@Autonomous(name="moveOnceAuto", group="Autonomous")
+@Autonomous(name="moveOnceAutoFar", group="Autonomous")
 public class MainAuto extends LinearOpMode {
 
     private DcMotor frontLeftMotor = null;
@@ -25,13 +25,13 @@ public class MainAuto extends LinearOpMode {
 
         waitForStart();
 
-        moveForward(1.0, 1000);
-
+        moveForward(1.0, 200);
+        turn(1.0, 100);
         stopMotors();
     }
 
     private void moveForward(double power, long duration) {
-        double forward = power;
+        double forward = - power;
         double strafe = 0;
         double rotate = 0;
 
@@ -56,7 +56,7 @@ public class MainAuto extends LinearOpMode {
     }
 
     private void moveBackward(double power, long duration) {
-        double forward = -power;
+        double forward = power;
         double strafe = 0;
         double rotate = 0;
 

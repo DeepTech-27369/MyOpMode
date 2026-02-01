@@ -3,29 +3,59 @@ package org.firstinspires.ftc.teamcode.AutonomousCode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
+import org.firstinspires.ftc.teamcode.AutonomousCode.mechanisms.Shooter;
+import org.json.JSONArray;
+
+
 @SuppressWarnings("unused")
-@Autonomous(name="shooterAuto", group="Autonomous")
-public class OtherAuto extends LinearOpMode {
+@Autonomous(name="shooterNear", group="Autonomous")
+public class OtherMainAuto extends LinearOpMode {
 
     private DcMotor frontLeftMotor = null;
     private DcMotor backLeftMotor = null;
     private DcMotor frontRightMotor = null;
     private DcMotor backRightMotor = null;
-
+    Shooter shooter = new Shooter();
+    double shooterRPM = 3200.0;
+    boolean shooterOn = true;
+    private DcMotor leftShooter;
+    private DcMotor rightShooter;
+    private HardwareMap hwMap;
     @Override
     public void runOpMode() {
+
         frontLeftMotor = hardwareMap.get(DcMotor.class, "frontLeftMotor");
         backLeftMotor = hardwareMap.get(DcMotor.class, "backLeftMotor");
         frontRightMotor = hardwareMap.get(DcMotor.class, "frontRightMotor");
         backRightMotor = hardwareMap.get(DcMotor.class, "backRightMotor");
 
+        leftShooter = hwMap.get(DcMotorEx.class, "leftShooter");
+        rightShooter = hwMap.get(DcMotorEx.class, "rightShooter");
+
+        leftShooter.setDirection(DcMotor.Direction.FORWARD);
+        rightShooter.setDirection(DcMotor.Direction.REVERSE);
+
+        leftShooter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightShooter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftShooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightShooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        leftShooter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        rightShooter.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         waitForStart();
 
-        moveForward(1.0, 1000);
+        moveBackward(0.5, 800);
+
+        shooter.setTargetRPM(shooterRPM);
+        shooter.update();
 
         stopMotors();
     }

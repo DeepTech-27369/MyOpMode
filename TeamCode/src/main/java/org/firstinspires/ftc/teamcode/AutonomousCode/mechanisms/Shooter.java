@@ -1,5 +1,5 @@
 
-package org.firstinspires.ftc.teamcode.OpModeStuff.mechanisms;
+package org.firstinspires.ftc.teamcode.AutonomousCode.mechanisms;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -64,6 +64,6 @@ public class Shooter {
 
 
     public double getRPM() {
-        return ((leftShooter.getVelocity() / TICKS_PER_REV) * 60.0);
+        return (leftShooter.getVelocity() / TICKS_PER_REV) * 60.0;
     }
 }
