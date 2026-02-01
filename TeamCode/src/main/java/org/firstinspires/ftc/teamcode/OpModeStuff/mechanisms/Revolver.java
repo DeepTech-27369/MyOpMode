@@ -7,7 +7,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class Revolver {
 
     private static CRServo revolverServo;
+    private static CRServo pusherServo;
     private static ElapsedTime timer = new ElapsedTime();
+
+
 
     // Tune these
     private static final double indexPower = 1;
@@ -17,9 +20,11 @@ public class Revolver {
     private static boolean isIndexing = false;
     private static int sixOrTwelve = 0;
 
+
     public void init(HardwareMap hwMap) {
         revolverServo = hwMap.get(CRServo.class, "revolverServo");
         revolverServo.setPower(0.0);
+        pusherServo = hwMap.get(CRServo.class, "pusherServo");
     }
 
     /** Call once to begin a 120-degree index */
