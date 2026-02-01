@@ -21,7 +21,7 @@ public class OtherMainAuto extends LinearOpMode {
     private DcMotor backRightMotor = null;
     Shooter shooter = new Shooter();
     double shooterRPM = 3200.0;
-    boolean shooterOn = true;
+    boolean shooterOn = false;
     private DcMotor leftShooter;
     private DcMotor rightShooter;
     private HardwareMap hwMap;
@@ -55,6 +55,7 @@ public class OtherMainAuto extends LinearOpMode {
         moveBackward(0.5, 800);
 
         shooter.setTargetRPM(shooterRPM);
+        boolean shooterOn = true;
         shooter.update();
 
         stopMotors();

@@ -72,8 +72,8 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
         if (shortButton && !lastShortButton) {
             if (!shooterOn) {
                 shooterOn = true;
-                shooterRPM = 2100; // short distance
-            } else if (shooterRPM == 2100) {
+                shooterRPM = 2700; // short distance
+            } else if (shooterRPM == 2700) {
                 shooterOn = false; // pressing same mode turns it off
             } else {
                 shooterRPM = 2700; // switch from long -> short
