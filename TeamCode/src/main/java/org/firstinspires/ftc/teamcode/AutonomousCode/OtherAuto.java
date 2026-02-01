@@ -5,8 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 @SuppressWarnings("unused")
-@Autonomous(name="moveOnceAuto", group="Autonomous")
-public class MainAuto extends LinearOpMode {
+@Autonomous(name="shooterAuto", group="Autonomous")
+public class OtherAuto extends LinearOpMode {
 
     private DcMotor frontLeftMotor = null;
     private DcMotor backLeftMotor = null;

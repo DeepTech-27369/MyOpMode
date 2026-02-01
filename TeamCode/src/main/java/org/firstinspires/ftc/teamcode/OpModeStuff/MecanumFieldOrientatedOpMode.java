@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.OpModeStuff.mechanisms.Revolver;
 import org.firstinspires.ftc.teamcode.OpModeStuff.mechanisms.Shooter;
 
 @SuppressWarnings("unused")
-@TeleOp(name = "myOpMode", group = "TeleOp")
+@TeleOp(name = "fahhOpMode", group = "TeleOp")
 public class MecanumFieldOrientatedOpMode extends OpMode {
     MecanumDrive drive = new MecanumDrive();
     double forward, strafe, rotate;
@@ -36,11 +36,11 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
     @Override
     public void loop() {
         // Drive
-        forward = - gamepad1.left_stick_y;
+        forward = gamepad1.left_stick_y;
         strafe = gamepad1.left_stick_x;
         rotate = gamepad1.right_stick_x;
 
-        drive.drive(forward, strafe, rotate);
+        drive.drive(forward, rotate, strafe);
 
         // Intake
         if (gamepad2.a) {
@@ -99,6 +99,8 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
 
         if (gamepad2.dpad_up) {
             Pusher.run();
+        } else if (gamepad2.dpad_down) {
+            Pusher.runOpposite();
         }
         else {
             Pusher.stop();

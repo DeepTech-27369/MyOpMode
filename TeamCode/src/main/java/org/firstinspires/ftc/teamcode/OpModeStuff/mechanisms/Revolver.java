@@ -14,7 +14,7 @@ public class Revolver {
 
     // Tune these
     private static final double indexPower = 1;
-    private static final double manualPower = 0.35;
+    private static final double manualPower = 0.275;
     private static final double one2_time = 0.875; // seconds for ~120°
     private static final double six_time = one2_time/2;
     private static boolean isIndexing = false;
@@ -51,10 +51,10 @@ public class Revolver {
     }
     public static void turnyTurn(int type) {
         if (type == 1) {
-            revolverServo.setPower(1.0);
+            revolverServo.setPower(0.7);
         }
         if (type == 2) {
-            revolverServo.setPower(-1.0);
+            revolverServo.setPower(-0.7);
         }
     }
     public static void stoppyStop() {
