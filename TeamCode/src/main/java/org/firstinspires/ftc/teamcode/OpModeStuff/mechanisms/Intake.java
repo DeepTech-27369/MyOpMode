@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.mechanisms;
+package org.firstinspires.ftc.teamcode.OpModeStuff.mechanisms;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -12,10 +12,14 @@ public class Intake {
 
         intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         stop();
-    }
 
+    }
+    //
     public void run() {
         intakeMotor.setPower(-1.0);
+    }
+    public void runItBack() {
+        intakeMotor.setPower(1.0);
     }
 
     public void stop() {

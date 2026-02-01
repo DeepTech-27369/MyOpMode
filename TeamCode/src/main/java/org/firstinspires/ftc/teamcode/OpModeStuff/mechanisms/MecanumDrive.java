@@ -1,21 +1,22 @@
-package org.firstinspires.ftc.teamcode.mechanisms;
+package org.firstinspires.ftc.teamcode.OpModeStuff.mechanisms;
 
-import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
+// import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.IMU;
+// import com.qualcomm.robotcore.hardware.IMU;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-
+// import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+//
 public class MecanumDrive {
     private DcMotor frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor;
-    private IMU imu;
+
     public void init(HardwareMap hwMap) {
-        frontLeftMotor = hwMap.get(DcMotor.class, "left_front");
-        backLeftMotor = hwMap.get(DcMotor.class, "left_back");
-        frontRightMotor = hwMap.get(DcMotor.class, "right_front");
-        backRightMotor = hwMap.get(DcMotor.class, "right_back");
+
+        frontLeftMotor = hwMap.get(DcMotor.class, "frontLeftMotor");
+        backLeftMotor = hwMap.get(DcMotor.class, "backLeftMotor");
+        frontRightMotor = hwMap.get(DcMotor.class, "frontRightMotor");
+        backRightMotor = hwMap.get(DcMotor.class, "backRightMotor");
 
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -25,20 +26,22 @@ public class MecanumDrive {
         frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        imu = hwMap.get(IMU.class, "imu");
 
-        RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot(
+
+        /* RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot(
                 RevHubOrientationOnRobot. LogoFacingDirection.UP,
                 RevHubOrientationOnRobot.UsbFacingDirection.FORWARD);
 
-        imu.initialize(new IMU.Parameters(RevOrientation));
+         */
+
+
     }
 
     public void drive(double forward, double strafe, double rotate) {
-        double frontLeftPower = forward + strafe + rotate;
-        double backLeftPower = forward - strafe + rotate;
-        double frontRightPower = forward - strafe - rotate;
-        double backRightPower = forward + strafe - rotate;
+        double frontLeftPower = forward + strafe - rotate;
+        double backLeftPower = forward - strafe - rotate;
+        double frontRightPower = forward - strafe + rotate;
+        double backRightPower = - forward + strafe - rotate;
 
         double maxPower = 1.0;
         double maxSpeed = 1.0;
@@ -52,14 +55,16 @@ public class MecanumDrive {
         backLeftMotor.setPower(maxSpeed * (backLeftPower / maxPower));
         frontRightMotor.setPower(maxSpeed * (frontRightPower / maxPower));
         backRightMotor.setPower(maxSpeed * (backRightPower / maxPower));
+
+        frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void driveFieldRelative(double forward, double strafe, double rotate) {
-        double theta = Math.atan2(forward, strafe);
+        double theta = Math.atan2(forward, strafe); //
         double r = Math.hypot(strafe, forward);
-
-        theta = AngleUnit.normalizeRadians(theta -
-                imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS));
 
         double newForward = r * Math.sin(theta);
         double newStrafe = r * Math.cos(theta);
