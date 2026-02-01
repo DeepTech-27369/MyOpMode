@@ -13,7 +13,7 @@ public class Pusher {
     }
 
     public static void run() {
-        pusherServo.setPower(-0.2);
+        pusherServo.setPower(0.2);
     }
 
     public static void stop() {

@@ -30,6 +30,7 @@ public class MecanumFieldOrientatedOpMode extends OpMode {
         intake.init(hardwareMap);
         shooter.init(hardwareMap);
         revolver.init(hardwareMap);
+        pusher.init(hardwareMap);
     }
 
     @Override
